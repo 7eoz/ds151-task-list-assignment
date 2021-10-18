@@ -16,8 +16,10 @@ const TaskListScreen = () => {
 	const [taskItems, setTaskItems] = useState([]);
 
 	const handleAddTask = () => {
-		setTaskItems([...taskItems, taskDescription]);
-		setTaskDescription('');
+		if (taskDescription) {
+			setTaskItems([...taskItems, taskDescription]);
+			setTaskDescription('');
+		}
 	};
 
 	const endTask = (index) => {
@@ -65,17 +67,19 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 	},
 	taskListInput: {
-		flex: 1,
+		// flex: 1,
 		flexDirection: 'row',
+		// alignItems: 'center',
+		// justifyContent: 'center',
 	},
 	taskListItems: {
-		flex: 2,
+		// flex: 1,
 		// flexDirection: 'row',
 	},
 	newTextInput: {
 		borderWidth: 1,
 		borderColor: 'black',
-		marginLeft: 10,
+		marginLeft: '5%',
 		marginTop: 10,
 		paddingLeft: 5,
 		width: '75%',
