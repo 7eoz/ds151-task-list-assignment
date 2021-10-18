@@ -4,6 +4,7 @@ import {
 	View,
 	TextInput,
 	TouchableOpacity,
+	button,
 	FlatList,
 	FlatListItem,
 	Text,
@@ -25,8 +26,8 @@ const TaskListScreen = () => {
 		setTaskItems(itemsCopy);
 	};
 	return (
-		<View>
-			<View style={styles.taskListScreen}>
+		<View style={styles.taskListScreen}>
+			<View style={styles.taskListInput}>
 				<TextInput
 					autoCapitalize='none'
 					autoCorrect={false}
@@ -36,22 +37,24 @@ const TaskListScreen = () => {
 					onChangeText={(t) => setTaskDescription(t)}
 				/>
 				<View>
-					<TouchableOpacity onPress={() => handleAddTask()}>
-						<View style={styles.addButton}>
+					<View style={styles.addButton}>
+						<TouchableOpacity onPress={() => handleAddTask()}>
 							<Text style={styles.addText}>+</Text>
-						</View>
-					</TouchableOpacity>
+						</TouchableOpacity>
+					</View>
 				</View>
 			</View>
-			{taskItems.map((description, index) => {
-				return (
-					<TaskItem
-						key={index}
-						onPress={() => endTask(index)}
-						description={description}
-					/>
-				);
-			})}
+			<View style={styles.taskListItems}>
+				{taskItems.map((description, index) => {
+					return (
+						<TaskItem
+							key={index}
+							onPress={() => endTask(index)}
+							description={description}
+						/>
+					);
+				})}
+			</View>
 		</View>
 	);
 };
@@ -59,13 +62,22 @@ const TaskListScreen = () => {
 const styles = StyleSheet.create({
 	taskListScreen: {
 		flex: 1,
+		flexDirection: 'column',
+	},
+	taskListInput: {
+		flex: 1,
 		flexDirection: 'row',
+	},
+	taskListItems: {
+		flex: 2,
+		// flexDirection: 'row',
 	},
 	newTextInput: {
 		borderWidth: 1,
 		borderColor: 'black',
-		margin: 10,
-		padding: 5,
+		marginLeft: 10,
+		marginTop: 10,
+		paddingLeft: 5,
 		width: '75%',
 		height: 24,
 	},

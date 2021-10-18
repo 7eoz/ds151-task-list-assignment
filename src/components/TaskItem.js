@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 	},
 	done: {
 		fontSize: 24,
-		fontWeight: 300,
+		fontWeight: '300',
 		marginLeft: 10,
 		textDecorationLine: 'line-through',
 	},
